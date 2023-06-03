@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href='./CoderCalculator.png'>
+  <title>Calculator</title>
+</head>
+<body>
+  <main class="mainContainer">
+    <section class="topHeader">
+        <img src="CoderCalculator.png" alt="CoderCalc" class="logo">
+        <div class="brands">
+          <div class="coder">Coder</div>
+          <div class="calculator">Calculator</div>  
+        </div>
+
+    </section>
+      <div class="displayCtn">
+        <div id="display"  class="display" ></div>
+      </div>
+    <section class="btnContainer">
+      <div class="row">
+        <button onclick="Clear()"class="operator">AC</button>
+        <button onclick="Delete()"class="operator">Del</button>
+        <button onclick="Bracket()"class="operator">()</button>
+        <button id="ope" onclick="addValue(this)"class="operator">÷</button>  
+      </div>
+      <div class="row">
+        <button onclick="addValue(this)"class="numbers">7</button>
+        <button onclick="addValue(this)"class="numbers">8</button>
+        <button onclick="addValue(this)"class="numbers">9</button>  
+        <button id="ope" onclick="addValue(this)"class="operator">×</button>  
+      </div>
+      <div class="row">
+        <button onclick="addValue(this)"class="numbers">4</button>
+        <button onclick="addValue(this)"class="numbers">5</button>
+        <button onclick="addValue(this)"class="numbers">6</button>  
+        <button id="ope" onclick="addValue(this)"class="operator">-</button>  
+      </div>
+      <div class="row">
+        <button onclick="addValue(this)"class="numbers">1</button>
+        <button onclick="addValue(this)"class="numbers">2</button>
+        <button onclick="addValue(this)"class="numbers">3</button>  
+        <button id="ope" onclick="addValue(this)"class="operator">+</button>  
+      </div>
+      <div class="row">
+        <button onclick="addValue(this)"class="numbers">.</button>
+        <button onclick="addValue(this)"class="numbers">0</button>
+        <button onclick="addValue(this)"class="numbers">+-</button>  
+        <button onclick="equal(this)"class="operator">=</button> 
+      </div>
+      <div id="result"></div>
+    </section>
+  </main>
+<script src="/script.js"></script>
+</body>
+</html>
