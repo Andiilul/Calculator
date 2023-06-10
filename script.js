@@ -3,34 +3,35 @@ const display = document.getElementById("display");
 let bracketValue = 0;
 let onOperator = false;
 let onBracket = false;
+const OperatorValueArr = ["+","-","*","/"]
 
-const addValue = (el) => {
-	if (el.id === "ope") {
+const addValue = (button) => {
+	if (button.id === "ope") {
 		if (onOperator === true) {
 			Delete();
-			if (el.textContent === "×") {
+			if (button.textContent === "×") {
 				display.textContent += "×";
 				result.textContent += "*";
 			} else {
-				display.textContent += el.textContent;
-				result.textContent += el.textContent;
+				display.textContent += button.textContent;
+				result.textContent += button.textContent;
 			}
-		} else {
-			if (el.textContent === "×") {
+		} else {	
+			if (button.textContent === "×") {
 				display.textContent += "×";
 				result.textContent += "*";
-			} else if (el.textContent === "÷") {
+			} else if (button.textContent === "÷") {
 				display.textContent += "÷";
 				result.textContent += "/";
 			} else {
-				display.textContent += el.textContent;
-				result.textContent += el.textContent;
+				display.textContent += button.textContent;
+				result.textContent += button.textContent;
 			}
 		}
 		onOperator = true;
 	} else {
 		onOperator = false;
-		const buttonValue = el.textContent;
+		const buttonValue = button.textContent;
 		display.textContent += buttonValue;
 		result.textContent += buttonValue;
 	}
@@ -48,6 +49,17 @@ const Clear = () => {
 const Delete = () => {
 	display.textContent = display.textContent.slice(0, -1);
 	result.textContent = result.textContent.slice(0, -1);
+
+	if(OperatorValueArr.includes(result.textContent[result.textContent.length - 1])){
+		onOperator=true
+		console.log("Operator detected"+result.textContent[result.textContent.length-1])
+	}
+	else{
+		onOperator=false
+		console.log("Number detected"+result.textContent[result.textContent.length-1])
+		
+	}
+
 };
 
 const Bracket = () => {
