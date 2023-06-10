@@ -14,6 +14,8 @@ body{
   width: min-content;
   overflow: hidden;
   border-radius: 5px;
+  user-select: none;
+
 }
 
 .topHeader{
@@ -52,13 +54,16 @@ body{
 .coder{
   color: #EBB701;
   overflow: hidden;
+  user-select: none;
 }
 .calculator{
   color: rgb(163, 166, 166);
   overflow: hidden;
+  user-select: none;
 }
 .logo{
   width: 30px;
+  user-select: none;
 }
 
 .btnContainer{
@@ -116,5 +121,3 @@ body{
   transition: 200ms ease-in-out;
 
 }
-
-
