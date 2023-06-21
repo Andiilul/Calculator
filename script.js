@@ -3,9 +3,13 @@ const display = document.getElementById("display");
 let bracketValue = 0;
 let onOperator = false;
 let onBracket = false;
-const OperatorValueArr = ["+","-","*","/"]
+let isResult = false;
+const OperatorValueArr = ["+", "-", "*", "/"];
 
 const addValue = (button) => {
+	if (isResult === true) {
+		Clear();
+	}
 	if (button.id === "ope") {
 		if (onOperator === true) {
 			Delete();
@@ -16,7 +20,7 @@ const addValue = (button) => {
 				display.textContent += button.textContent;
 				result.textContent += button.textContent;
 			}
-		} else {	
+		} else {
 			if (button.textContent === "×") {
 				display.textContent += "×";
 				result.textContent += "*";
@@ -44,22 +48,43 @@ const Clear = () => {
 	onOperator = false;
 	bracketValue = 0;
 	onBracket = false;
+	isResult = false;
 };
 
 const Delete = () => {
-	display.textContent = display.textContent.slice(0, -1);
-	result.textContent = result.textContent.slice(0, -1);
-
-	if(OperatorValueArr.includes(result.textContent[result.textContent.length - 1])){
-		onOperator=true
-		console.log("Operator detected"+result.textContent[result.textContent.length-1])
-	}
-	else{
-		onOperator=false
-		console.log("Number detected"+result.textContent[result.textContent.length-1])
-		
+	//clear after equal
+	if (isResult === true) {
+		Clear();
 	}
 
+	//normal delete
+	else {
+		//check before
+		if(onBracket===true){
+			onBracket=false
+		}
+		else if(onOperator===true){
+			onOperator=false
+		}
+		//delete 1 char
+		display.textContent = display.textContent.slice(0, -1);
+		result.textContent = result.textContent.slice(0, -1);
+
+		//check onOperator after delete
+		if (OperatorValueArr.includes(result.textContent[result.textContent.length - 1])) {
+			onOperator = true;
+			console.log(
+				"Operator detected" + result.textContent[result.textContent.length - 1]
+			);
+		}
+		//check Bracket after delete
+		if (result.textContent[result.textContent.length - 1] === "(") {
+			onOperator = true;
+			console.log(
+				"Operator detected" + result.textContent[result.textContent.length - 1]
+			);
+		}
+	}
 };
 
 const Bracket = () => {
@@ -69,7 +94,7 @@ const Bracket = () => {
 				bracketValue = bracketValue + 1;
 				display.textContent = display.textContent += "(";
 				result.textContent = result.textContent += "(";
-				onBracket=true;
+				onBracket = true;
 			} else {
 				display.textContent = display.textContent += ")";
 				result.textContent = result.textContent += ")";
@@ -79,18 +104,17 @@ const Bracket = () => {
 			display.textContent = display.textContent += "(";
 			result.textContent = result.textContent += "(";
 			bracketValue = bracketValue + 1;
-			onBracket=true;
+			onBracket = true;
 		}
-	} 
-	else {
+	} else {
 		bracketValue = bracketValue + 1;
-				display.textContent = display.textContent += "(";
-				result.textContent = result.textContent += "(";
+		display.textContent = display.textContent += "(";
+		result.textContent = result.textContent += "(";
 	}
 };
 
 const equal = () => {
 	result.textContent = eval(result.textContent);
-	display.textContent = result.textContent;
-	onOperator = false;
+	display.textContent = result.textContent.toLocaleString("en-US");
+	isResult = true;
 };
