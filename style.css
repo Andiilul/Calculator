@@ -112,12 +112,12 @@ body{
 
 }
 .operator:hover{
-  background-color: #b18b00;
+  background-color: #c3a022;
   transition: 200ms ease-in-out;
 }
 
 .numbers:hover{
-  background-color: #dedede2a;
+  background-color: #2d2d2e8e;
   transition: 200ms ease-in-out;
 
 }
