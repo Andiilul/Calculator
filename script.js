@@ -62,6 +62,8 @@ const Delete = () => {
 		//check before
 		if(onBracket===true){
 			onBracket=false
+			bracketValue-=1
+
 		}
 		else if(onOperator===true){
 			onOperator=false
@@ -79,7 +81,7 @@ const Delete = () => {
 		}
 		//check Bracket after delete
 		if (result.textContent[result.textContent.length - 1] === "(") {
-			onOperator = true;
+			onBracket = true;
 			console.log(
 				"Operator detected" + result.textContent[result.textContent.length - 1]
 			);
