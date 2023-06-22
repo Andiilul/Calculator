@@ -171,10 +171,18 @@ const equal = () => {
 	if(result.textContent===""){
 		return
 	}
+	//if last char is bracket or operator return nothing
+	if(result.textContent[result.textContent.length-1]==="(" || OperatorValueArr.includes(result.textContent[result.textContent.length - 1])){
+		display.textContent="Undefined"
+		isResult=true
+		return;
 
+	}
+	
 	//auto close bracket
 	while (bracketValue!=0){
-		Bracket()
+		result.textContent = result.textContent + ")";
+		bracketValue-=1
 	}
 	result.textContent = eval(result.textContent);
 	isResult = true;
