@@ -171,6 +171,11 @@ const equal = () => {
 	if(result.textContent===""){
 		return
 	}
+
+	//auto close bracket
+	while (bracketValue!=0){
+		Bracket()
+	}
 	result.textContent = eval(result.textContent);
 	isResult = true;
 	display.textContent = result.textContent;
